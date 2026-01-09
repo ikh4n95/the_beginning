@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "terminal": {
+      "enabled": true,
+      "commands": ["all"],
+      "working_directory": "/Users/ikhan/sidetings/the_beginning"
+    },
+    "npm": {
+      "enabled": true,
+      "commands": [
+        "install",
+        "uninstall",
+        "run",
+        "build",
+        "start",
+        "dev",
+        "lint",
+        "test",
+        "ci",
+        "audit",
+        "update",
+        "version"
+      ],
+      "registry_access": true,
+      "package_management": true
+    },
+    "filesystem": {
+      "read": true,
+      "write": true,
+      "create": true,
+      "delete": true,
+      "paths": [
+        "**/*",
+        "node_modules/**",
+        "package.json",
+        "package-lock.json"
+      ]
+    },
+    "network": {
+      "enabled": true,
+      "domains": [
+        "registry.npmjs.org",
+        "npmjs.com",
+        "github.com",
+        "*.npmjs.org"
+      ]
+    },
+    "git": {
+      "read": true,
+      "write": true,
+      "operations": [
+        "commit",
+        "push",
+        "pull",
+        "branch",
+        "checkout",
+        "merge"
+      ]
+    }
+  },
+  "settings": {
+    "auto_approve_terminal": true,
+    "auto_approve_npm_install": true,
+    "require_confirmation_for_destructive_commands": false
+  }
+}

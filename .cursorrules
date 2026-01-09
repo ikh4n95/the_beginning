@@ -1,0 +1,24 @@
+# Cursor AI Rules and Permissions
+
+## Terminal Access
+- The AI assistant has permission to execute terminal commands
+- Commands can be run in the project directory
+- npm commands are explicitly allowed
+
+## npm Permissions
+- Full access to npm commands (install, run, build, etc.)
+- Permission to modify package.json and package-lock.json
+- Permission to install and manage node_modules
+
+## File System Permissions
+- Read and write access to all project files
+- Permission to create, modify, and delete files in the project directory
+- Access to node_modules directory
+
+## Network Access
+- Permission to fetch packages from npm registry
+- Network access required for package installation
+
+## Git Permissions
+- Read access to git repository
+- Write access for commits and branch operations
