@@ -1,8 +1,18 @@
+import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
+import { getUserFromSession } from '@/lib/session';
 
 export default async function Home() {
+  const user = await getUserFromSession();
+  if (!user) {
+    redirect('/login?next=/');
+  }
+
   // Fetch all posts from the database
   const posts = await prisma.post.findMany({
+    where: {
+      userId: user.id,
+    },
     orderBy: {
       createdAt: 'desc',
     },
@@ -26,6 +36,17 @@ export default async function Home() {
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Welcome to your Next.js application with TypeScript & Prisma
           </p>
+
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Signed in as {user.email}
+          </p>
+
+          <a
+            href="/logout"
+            className="inline-flex items-center justify-center rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-700 shadow-sm transition hover:bg-indigo-50"
+          >
+            Log out
+          </a>
           
           <div className="flex flex-wrap justify-center gap-3 mt-6">
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-lg">
